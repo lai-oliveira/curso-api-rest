@@ -13,4 +13,6 @@ public interface UserService {
 
     Users create(UserDto obj);
 
+    Users update(UserDto obj);
+
 }
