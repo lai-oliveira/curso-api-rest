@@ -1,8 +1,8 @@
 package br.com.projetorest.api.services;
 
-import br.com.projetorest.api.domain.User;
+import br.com.projetorest.api.domain.Users;
 
 public interface UserService {
 
-    User findById(Integer id);
+    Users findById(Integer id);
 }
