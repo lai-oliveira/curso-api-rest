@@ -3,6 +3,7 @@ package br.com.projetorest.api.services.impl;
 import br.com.projetorest.api.domain.Users;
 import br.com.projetorest.api.domain.dto.UserDto;
 import br.com.projetorest.api.repositories.UserRepository;
+import br.com.projetorest.api.services.exceptions.DataIntegratyViolationException;
 import br.com.projetorest.api.services.exceptions.ObjectNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,8 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 class UserServiceImplTest {
@@ -100,6 +100,20 @@ class UserServiceImplTest {
         assertEquals(NAME, response.getName());
         assertEquals(EMAIL, response.getEmail());
         assertEquals(PASSWORD, response.getPassword());
+    }
+
+    @Test
+    void whenCreateThenReturnAnDataIntegrityViolationException() {
+        when(repository.findByEmail(anyString())).thenReturn(optionalUsers);
+
+        try {
+            service.create(userDto);
+        }catch (Exception ex){
+            assertEquals(DataIntegratyViolationException.class,ex.getClass());
+            assertEquals("Email ja cadastrado no sisteme",ex.getMessage());
+        }
+
+
     }
     @Test
     void update() {
