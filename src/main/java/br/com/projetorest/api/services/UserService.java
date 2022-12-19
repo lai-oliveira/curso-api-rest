@@ -15,4 +15,5 @@ public interface UserService {
 
     Users update(UserDto obj);
 
+    void delete(Integer id);
 }
