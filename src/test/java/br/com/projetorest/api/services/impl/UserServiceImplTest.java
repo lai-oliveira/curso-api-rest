@@ -129,6 +129,20 @@ class UserServiceImplTest {
         assertEquals(EMAIL, response.getEmail());
         assertEquals(PASSWORD, response.getPassword());
     }
+    @Test
+    void whenUpdateThenReturnAnDataIntegrityViolationException() {
+        when(repository.findByEmail(anyString())).thenReturn(optionalUsers);
+
+        try {
+            optionalUsers.get().setId(2);
+            service.create(userDto);
+        }catch (Exception ex){
+            assertEquals(DataIntegratyViolationException.class,ex.getClass());
+            assertEquals("Email já cadastrado",ex.getMessage());
+        }
+
+
+    }
 
 
     @Test
