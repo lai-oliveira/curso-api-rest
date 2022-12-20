@@ -1,5 +1,5 @@
 # curso-api-rest
-# Cobertura de 100% do projeto com testes unitários
+## Cobertura de 100% do projeto com testes unitários
 # Testes de integração com Postman
 # Criação de collections com Postman
 # Eliminação de códigos boilerplate com Lombok
