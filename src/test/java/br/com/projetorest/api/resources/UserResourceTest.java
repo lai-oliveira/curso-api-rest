@@ -2,23 +2,20 @@ package br.com.projetorest.api.resources;
 
 import br.com.projetorest.api.domain.Users;
 import br.com.projetorest.api.domain.dto.UserDto;
-import br.com.projetorest.api.services.UserService;
 import br.com.projetorest.api.services.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -34,7 +31,7 @@ class UserResourceTest {
     public static final Integer ID = 1;
     public static final int INDEX = 0;
 
-    private Users users;
+    private Users users ;
     private UserDto userDto;
 
     @InjectMocks
